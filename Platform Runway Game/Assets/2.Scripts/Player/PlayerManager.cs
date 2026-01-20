@@ -31,6 +31,14 @@ public class PlayerManager : MonoBehaviour
     {
         if (Input.GetButtonDown("Jump") && jumpCount < maxJumpCount)
         {
+            JumpBtn();
+        }
+    }
+
+    public void JumpBtn()
+    {
+        if (jumpCount < maxJumpCount)
+        {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
 
             jumpCount++;

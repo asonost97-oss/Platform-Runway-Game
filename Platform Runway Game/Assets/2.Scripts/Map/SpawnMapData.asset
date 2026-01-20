@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d333e3eb279b6104b934c644cb0e183f, type: 3}
-  m_Name: MapData
+  m_Name: SpawnMapData
   m_EditorClassIdentifier: 
-  MinDr: {x: -20, y: -10}
-  MaxDr: {x: 25, y: 10}
+  MinDr: {x: 9, y: -3.6}
+  MaxDr: {x: 9, y: -3.6}
