@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -8,6 +9,9 @@ public class PlayerManager : MonoBehaviour
     [SerializeField]
     int maxJumpCount = 2;
     float jumpCount;
+
+    [SerializeField]
+    Image[] hpImages;
     
     bool isGrounded = false;
 
@@ -49,7 +53,6 @@ public class PlayerManager : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        // ¹Ù´Ú °¨Áö
         if (collision.gameObject.CompareTag("Ground"))
         {
             isGrounded = true;
@@ -60,11 +63,25 @@ public class PlayerManager : MonoBehaviour
     }
 
     void OnCollisionExit2D(Collision2D collision)
-    {
-        // ¹Ù´Ú¿¡¼­ ¶°³²
+    {        
         if (collision.gameObject.CompareTag("Ground"))
         {
             isGrounded = false;
+        }
+    }
+
+    public void SetHP(int index, bool isActive)
+    {
+        hpImages[index].color = isActive == true ? Color.white : Color.black;
+    }
+
+    void Hit()
+    {
+        GameManager.Instance.lives -= 1;
+
+        if(GameManager.Instance.lives == 0)
+        {
+            Destroy(gameObject);
         }
     }
 }

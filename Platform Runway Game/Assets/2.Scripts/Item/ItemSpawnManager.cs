@@ -1,31 +1,53 @@
+using System.Collections;
 using UnityEngine;
 
 public class ItemSpawnManager : MonoBehaviour
 {
     [SerializeField]
-    int scorePoint = 100;
-
-    int scoreRepeat = 1000;
+    int dScore = 2;
 
     PlayerManager playerManager;
 
     [SerializeField]
     GameObject[] itemPrefab;
 
+    [SerializeField]
+    float aliveTimeAfterSpawn = 5;
+    bool allowCollect = true;
+
     private void Start()
     {
         playerManager = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerManager>();
     }
 
-    public void SpawnItem()
+    public void Setup()
     {
-        //playerManager.Score += scorePoint;
+        StartCoroutine(nameof(SpawnItemProcess));
+    }
 
-        int spawnItem = Random.Range(0, 100);
+    IEnumerator SpawnItemProcess()
+    {
+        allowCollect = false;
 
-        if (scoreRepeat != null)
+        var rigid = gameObject.AddComponent<Rigidbody2D>();
+        rigid.freezeRotation = true;
+
+        allowCollect = true;
+        GetComponent<Collider2D>().isTrigger = false;
+
+        yield return new WaitForSeconds(aliveTimeAfterSpawn);
+
+        Destroy(gameObject);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (allowCollect && collision.transform.CompareTag("Player"))
         {
-            Instantiate(itemPrefab[0], transform.position, Quaternion.identity);
+            UpdateCollision(collision.transform);
+            Destroy(gameObject);
         }
     }
+
+    public abstract void UpdateCollision(Transform target);
 }

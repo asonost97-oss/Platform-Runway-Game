@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
 
     public GameObject startBtn;
 
+    public int lives = 3;
+
     private void Awake()
     {
         if(Instance == null)
