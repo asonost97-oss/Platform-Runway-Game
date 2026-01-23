@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7523886570990886963}
   - component: {fileID: 3622863047776369844}
   - component: {fileID: 8177787746130829124}
+  - component: {fileID: 1381610489280831822}
   m_Layer: 0
   m_Name: delivery_Obstacle
   m_TagString: Obstacle
@@ -143,7 +144,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -186,3 +187,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mapData: {fileID: 11400000, guid: cb106d012f40b03408cf35fb52c0e6da, type: 2}
+--- !u!114 &1381610489280831822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 811456168091995152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a95d607fcba3b40abc863328ae16ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1

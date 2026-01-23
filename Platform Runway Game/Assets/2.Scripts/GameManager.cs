@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum GameState
 {
@@ -15,8 +16,6 @@ public class GameManager : MonoBehaviour
 
     public GameObject startBtn;
 
-    public int lives = 3;
-
     private void Awake()
     {
         if(Instance == null)
@@ -28,6 +27,9 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         startBtn.SetActive(true);
+
+        // 게임 시작 전 멈춤
+        Time.timeScale = 0f;
     }
 
     // Update is called once per frame
@@ -35,9 +37,18 @@ public class GameManager : MonoBehaviour
     {
         if(state == GameState.Intro && Input.GetKeyDown(KeyCode.Space))
         {
-            state = GameState.Play;
+            StartGame();
+        }
+    }
 
+    public void StartGame()
+    {
+        if(state == GameState.Intro)
+        {
+            state = GameState.Play;
             startBtn.SetActive(false);
+            // 게임 재개
+            Time.timeScale = 1f;
         }
     }
 }

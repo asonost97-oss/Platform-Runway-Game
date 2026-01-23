@@ -44,10 +44,10 @@ public class ItemSpawnManager : MonoBehaviour
     {
         if (allowCollect && collision.transform.CompareTag("Player"))
         {
-            UpdateCollision(collision.transform);
+            //UpdateCollision(collision.transform);
             Destroy(gameObject);
         }
     }
 
-    public abstract void UpdateCollision(Transform target);
+    //public abstract void UpdateCollision(Transform target);
 }
