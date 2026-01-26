@@ -17,6 +17,13 @@ public class PlayerManager : MonoBehaviour
     const int hpMax = 3; // 플레이어 HP
     int currentHP;
 
+    [SerializeField]
+    float maxTime = 180;
+    float currTime;
+
+    public float MaxTime => maxTime;
+    public float CurrTime => currTime;
+
     bool isGrounded = false;
     bool isInvincible = false; // 무적 상태
 
@@ -33,6 +40,9 @@ public class PlayerManager : MonoBehaviour
 
         spriteRenderer = GetComponent<SpriteRenderer>();
 
+        // Timer 초기화
+        currTime = maxTime;
+
         // HP 초기화
         currentHP = hpMax;
         UpdateHPDisplay();
@@ -44,6 +54,10 @@ public class PlayerManager : MonoBehaviour
         if (GameManager.Instance != null && GameManager.Instance.state == GameState.Play)
         {
             HandleJump();
+
+            // Timer 감소
+            currTime -= Time.deltaTime;
+            if (currTime < 0f) currTime = 0f;
         }
     }
 
@@ -129,10 +143,11 @@ public class PlayerManager : MonoBehaviour
 
         UpdateHPDisplay();
 
-        // 무적 상태 시작 (0.5초)
+        // 무적 상태 시작 (0.6초)
         isInvincible = true;
-        StopCoroutine("InvincibleTimer");
-        StartCoroutine("InvincibleTimer");
+
+        StopCoroutine("InvincibleTime");
+        StartCoroutine("InvincibleTime");
 
         if (currentHP <= 0)
         {
@@ -156,7 +171,7 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
-    IEnumerator InvincibleTimer()
+    IEnumerator InvincibleTime()
     {
         yield return new WaitForSeconds(0.6f);
         isInvincible = false;

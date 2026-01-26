@@ -16,6 +16,9 @@ public class GameManager : MonoBehaviour
 
     public GameObject startBtn;
 
+    [SerializeField]
+    GameObject startTimer;
+
     private void Awake()
     {
         if(Instance == null)
@@ -27,6 +30,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         startBtn.SetActive(true);
+        startTimer.SetActive(true);
 
         // 게임 시작 전 멈춤
         Time.timeScale = 0f;
@@ -51,4 +55,6 @@ public class GameManager : MonoBehaviour
             Time.timeScale = 1f;
         }
     }
+
+
 }
