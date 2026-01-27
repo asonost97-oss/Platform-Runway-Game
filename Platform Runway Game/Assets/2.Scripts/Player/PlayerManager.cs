@@ -128,6 +128,12 @@ public class PlayerManager : MonoBehaviour
             SetHP(i, i < currentHP);
         }
     }
+    
+    public void AddHP(int amount)
+    {
+        currentHP = Mathf.Min(hpMax, currentHP + amount);
+        UpdateHPDisplay();
+    }
 
     public void Hit(int damage)
     {

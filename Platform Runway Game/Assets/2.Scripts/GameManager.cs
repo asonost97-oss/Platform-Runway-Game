@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     GameObject startTimer;
+    [SerializeField]
+    GameObject startDistance;
 
     private void Awake()
     {
@@ -31,6 +33,7 @@ public class GameManager : MonoBehaviour
     {
         startBtn.SetActive(true);
         startTimer.SetActive(true);
+        startDistance.SetActive(true);
 
         // 게임 시작 전 멈춤
         Time.timeScale = 0f;

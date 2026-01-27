@@ -14,6 +14,9 @@ public class Scroller : MonoBehaviour
     [SerializeField]
     Vector3 moveDr = Vector3.right;
 
+    public Vector3 MoveDr => moveDr;
+    public float Speed => speed;
+
     void Update()
     {
         // 각 배경을 개별적으로 이동

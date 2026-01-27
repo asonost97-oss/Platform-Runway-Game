@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public enum ItemType { PowerUp = 0, Skill, }
+public enum ItemType { Life, }
 
 public class ItemManager : MonoBehaviour
 {
@@ -18,7 +18,7 @@ public class ItemManager : MonoBehaviour
 
     private void Update()
     {
-        DontoutMap();
+        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -27,13 +27,5 @@ public class ItemManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }
-
-    void DontoutMap()
-    {
-        //플레이어 화면 범위 밖으로 나가지 못하게 함
-        transform.position = new Vector3(
-        Mathf.Clamp(transform.position.x, mapData.minDr.x, mapData.maxDr.x),
-            Mathf.Clamp(transform.position.y, mapData.minDr.y, mapData.maxDr.y));
     }
 }

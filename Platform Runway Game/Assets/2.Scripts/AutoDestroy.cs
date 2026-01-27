@@ -1,20 +1,36 @@
+using System.Collections;
 using UnityEngine;
 
 public class AutoDestroy : MonoBehaviour
 {
+    //[SerializeField]
+    //MapData mapData;
+
+    //float destroyW = 15f;
+
+    //private void LateUpdate()
+    //{
+    //    if (transform.position.y < mapData.minDr.y - destroyW ||
+    //        transform.position.y > mapData.maxDr.y + destroyW ||
+    //        transform.position.x < mapData.minDr.x - destroyW ||
+    //        transform.position.x > mapData.maxDr.x + destroyW)
+    //    {
+    //        Destroy(gameObject);
+    //    }
+    //}
+
     [SerializeField]
-    MapData mapData;
+    float aliveTimeAfterSpawn = 5;
 
-    float destroyW = 15f;
-
-    private void LateUpdate()
+    public void Setup()
     {
-        if (transform.position.y < mapData.minDr.y - destroyW ||
-            transform.position.y > mapData.maxDr.y + destroyW ||
-            transform.position.x < mapData.minDr.x - destroyW ||
-            transform.position.x > mapData.maxDr.x + destroyW)
-        {
-            Destroy(gameObject);
-        }
+        StartCoroutine(nameof(MaintainsItem));
+    }
+
+    IEnumerator MaintainsItem()
+    {
+        yield return new WaitForSeconds(aliveTimeAfterSpawn);
+
+        Destroy(gameObject);
     }
 }

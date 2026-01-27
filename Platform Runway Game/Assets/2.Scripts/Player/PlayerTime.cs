@@ -28,11 +28,11 @@ public class PlayerTime : MonoBehaviour
     {
         if (playerTimeSlider != null && playerTime != null)
         {
-            playerTimeSlider.value = playerTime.CurrTime; // »©Áö ¸»°í "¼¼ÆÃ"
+            playerTimeSlider.value = playerTime.CurrTime; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ "ï¿½ï¿½ï¿½ï¿½"
         }
 
         if (timeText != null && playerTime != null)
-            timeText.text = FormatTime(playerTime.CurrTime); // 180 -> 179... Ç¥½Ã
+            timeText.text = FormatTime(playerTime.CurrTime); // 180 -> 179... Ç¥ï¿½ï¿½
     }
 
     string FormatTime(float seconds)
@@ -41,6 +41,6 @@ public class PlayerTime : MonoBehaviour
         int m = s / 60;
         int r = s % 60;
         return $"Time: {m:00}:{r:00}";
-        // ÃÊ·Î¸¸ º¸°í ½ÍÀ¸¸é: return $"Time: {s}s";
+        // ï¿½Ê·Î¸ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½: return $"Time: {s}s";
     }
 }
