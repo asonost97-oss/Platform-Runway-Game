@@ -4,34 +4,34 @@ using UnityEngine.UI;
 public class DistanceManager : MonoBehaviour
 {
     [SerializeField]
-    Text textDistance; // TextDistance UI ¿ä¼Ò ÂüÁ¶
+    Text textDistance; // TextDistance UI ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
     [SerializeField]
-    Scroller scroller; // Scroller ÂüÁ¶ (¹è°æ ÀÌµ¿ ¼Óµµ °¡Á®¿À±â)
+    Scroller scroller; // Scroller ï¿½ï¿½ï¿½ï¿½ (ï¿½ï¿½ï¿½ ï¿½Ìµï¿½ ï¿½Óµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½)
 
-    float totalDistance = 0f; // ´©Àû ÀÌµ¿ °Å¸® (¹ÌÅÍ)
+    float totalDistance = 0f; // ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½ ï¿½Å¸ï¿½ (ï¿½ï¿½ï¿½ï¿½)
 
     void Start()
     {
-        // ÃÊ±â UI ¾÷µ¥ÀÌÆ®
+        // ï¿½Ê±ï¿½ UI ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®
         UpdateDistanceText();
     }
 
     void Update()
     {
-        // °ÔÀÓÀÌ Play »óÅÂÀÏ ¶§¸¸ µ¿ÀÛ
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Play ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         if (GameManager.Instance != null && GameManager.Instance.state == GameState.Play)
         {
             if (scroller != null)
             {
-                // ScrollerÀÇ ¼Óµµ¿Í ¹æÇâÀ» »ç¿ëÇÏ¿© ÀÌµ¿ °Å¸® °è»ê
-                // moveDr * speed * Time.deltaTime°¡ ¹è°æÀÇ ÀÌµ¿·®ÀÌ¹Ç·Î
+                // Scrollerï¿½ï¿½ ï¿½Óµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ ï¿½Ìµï¿½ ï¿½Å¸ï¿½ ï¿½ï¿½ï¿½
+                // moveDr * speed * Time.deltaTimeï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½ï¿½ï¿½ï¿½Ì¹Ç·ï¿½
                 float distanceThisFrame = scroller.MoveDr.magnitude * scroller.Speed * Time.deltaTime;
 
-                // ´©Àû °Å¸®¿¡ Ãß°¡
+                // ï¿½ï¿½ï¿½ï¿½ ï¿½Å¸ï¿½ï¿½ï¿½ ï¿½ß°ï¿½
                 totalDistance += distanceThisFrame;
 
-                // ¸Å ÇÁ·¹ÀÓ¸¶´Ù UI ¾÷µ¥ÀÌÆ®
+                // ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ó¸ï¿½ï¿½ï¿½ UI ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®
                 UpdateDistanceText();
             }
         }
@@ -41,7 +41,7 @@ public class DistanceManager : MonoBehaviour
     {
         if (textDistance != null)
         {
-            // ¼Ò¼öÁ¡ 3ÀÚ¸®±îÁö Ç¥½Ã (0.000 Çü½Ä)
+            // ï¿½Ò¼ï¿½ï¿½ï¿½ 3ï¿½Ú¸ï¿½ï¿½ï¿½ï¿½ï¿½ Ç¥ï¿½ï¿½ (0.000 ï¿½ï¿½ï¿½ï¿½)
             textDistance.text = $"M: {totalDistance:F1}";
         }
     }

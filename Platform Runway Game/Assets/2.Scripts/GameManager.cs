@@ -6,6 +6,7 @@ public enum GameState
     Intro,
     Play,
     Dead,
+    End,
 }
 
 public class GameManager : MonoBehaviour
@@ -13,6 +14,8 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
 
     public GameState state = GameState.Intro;
+
+    public GameState stateEnd = GameState.End;
 
     public GameObject startBtn;
 
