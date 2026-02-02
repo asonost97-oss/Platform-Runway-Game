@@ -11,7 +11,7 @@ public class SpeedUPStage : MonoBehaviour
     [SerializeField]
     float displayDuration = 2f;
     [SerializeField]
-    float blinkSpeed = 1f;
+    float blinkSpeed = 1.5f;
 
     Text speedUpText;
     Scroller.Level lastLevel;

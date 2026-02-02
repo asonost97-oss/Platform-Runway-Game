@@ -178,7 +178,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textCoin: {fileID: 0}
   moveSpeed: 10
+  addTime: 2
   goldPrefab: {fileID: 0}
+  playerManager: {fileID: 0}
 --- !u!114 &-3169586028288242573
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -191,4 +193,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99a72ce028dcc624c97afa9026fd623c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapData: {fileID: 11400000, guid: cb106d012f40b03408cf35fb52c0e6da, type: 2}
+  aliveTimeAfterSpawn: 5
