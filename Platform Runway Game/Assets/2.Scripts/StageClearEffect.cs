@@ -159,7 +159,7 @@ public class StageClearEffect : MonoBehaviour
 
     public void OnClickBackToLobby()
     {
-        // SceneLoader가 있다면 사용
-        //m_AsyncOperation = SceneLoader.Instance.LoadSceneAsync(SceneType.Lobby);
+        //SceneLoader가 있다면 사용
+       m_AsyncOperation = SceneLoader.Instance.LoadSceneAsync(SceneType.Lobby);
     }
 }
