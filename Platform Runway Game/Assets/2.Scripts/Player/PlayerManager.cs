@@ -18,7 +18,7 @@ public class PlayerManager : MonoBehaviour
     int currentHP;
 
     [SerializeField]
-    float maxTime = 180;
+    float maxTime = 30;
     float currTime;
 
     public float MaxTime => maxTime;
@@ -58,6 +58,12 @@ public class PlayerManager : MonoBehaviour
             // Timer 감소
             currTime -= Time.deltaTime;
             if (currTime < 0f) currTime = 0f;
+
+            if (currTime <= 0f)
+            {
+                if (GameManager.Instance != null)
+                    GameManager.Instance.state = GameState.Dead;
+            }
         }
     }
 
@@ -157,6 +163,9 @@ public class PlayerManager : MonoBehaviour
 
         if (currentHP <= 0)
         {
+            // 플레이어 사망 시 게임 종료 상태로 전환
+            if (GameManager.Instance != null)
+                GameManager.Instance.state = GameState.Dead;
             Destroy(gameObject);
         }
     }
@@ -181,5 +190,11 @@ public class PlayerManager : MonoBehaviour
     {
         yield return new WaitForSeconds(0.6f);
         isInvincible = false;
+    }
+
+    // 플레이어에게 시간 추가 (골드 수집 등)
+    public void AddTime(float seconds)
+    {
+        currTime = Mathf.Min(maxTime, currTime + seconds);
     }
 }

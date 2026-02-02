@@ -15,8 +15,6 @@ public class GameManager : MonoBehaviour
 
     public GameState state = GameState.Intro;
 
-    public GameState stateEnd = GameState.End;
-
     public GameObject startBtn;
 
     [SerializeField]
@@ -45,10 +43,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(state == GameState.Intro && Input.GetKeyDown(KeyCode.Space))
-        {
-            StartGame();
-        }
+        
     }
 
     public void StartGame()

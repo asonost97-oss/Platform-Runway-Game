@@ -11,10 +11,15 @@ public class GoldManager : MonoBehaviour
     float moveSpeed = 10f; // 골드가 이동하는 속도
 
     [SerializeField]
+    float addTime = 3f;
+
+    [SerializeField]
     GameObject goldPrefab;
 
     static int coinCount = 0; // 정적 변수로 코인 개수 관리 (모든 Gold 오브젝트가 공유)
     static Text staticTextCoin; // 정적 변수로 TextCoin 참조 저장
+
+    public PlayerManager playerManager;
 
     void Start()
     {
@@ -30,10 +35,9 @@ public class GoldManager : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        // 플레이어와 충돌했는지 확인
         if (collision.CompareTag("Player"))
         {
-            // 골드 수집 애니메이션 시작
+            playerManager = collision.gameObject.GetComponentInParent<PlayerManager>();
             StartCoroutine(MoveToCoinUI());
         }
     }
@@ -61,7 +65,10 @@ public class GoldManager : MonoBehaviour
         coinCount++;
         UpdateCoinText();
 
-        // 골드 오브젝트 파괴
+        // 골드 수집 시 남은 시간 3초 증가
+        if (playerManager != null)
+            playerManager.AddTime(addTime);
+
         Destroy(gameObject);
     }
 
