@@ -58,12 +58,12 @@ public class StageClearEffect : MonoBehaviour
     {
         isGameOver = true;
 
-        // Lose SFX 재생
-        //if (AudioManager.Instance != null)
-        //{
-        //    AudioManager.Instance.PlaySFX(SFX.Lose);
-        //    Debug.Log("Lose SFX 재생!");
-        //}
+        //Lose SFX 재생
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.PlaySFX(SFX.Lose);
+            Debug.Log("Lose SFX 재생!");
+        }
 
         if (defeatTextObject != null)
         {
@@ -88,6 +88,13 @@ public class StageClearEffect : MonoBehaviour
     // 2초 후 게임과 BGM 일시정지
     private IEnumerator PauseGameAfterDelay()
     {
+        //BGM 일시정지
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.PauseBGM();
+            Debug.Log("BGM 일시정지!");
+        }
+
         // 2초 대기
         yield return new WaitForSeconds(2f);
 
@@ -95,13 +102,6 @@ public class StageClearEffect : MonoBehaviour
 
         // 게임 일시정지
         Time.timeScale = 0f;
-
-        // BGM 일시정지
-        //if (AudioManager.Instance != null)
-        //{
-        //    AudioManager.Instance.PauseBGM();
-        //    Debug.Log("BGM 일시정지!");
-        //}
     }
 
     private IEnumerator DefeatColorEffect()

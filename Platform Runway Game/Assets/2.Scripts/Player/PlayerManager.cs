@@ -85,6 +85,13 @@ public class PlayerManager : MonoBehaviour
 
             anim.SetTrigger("Jump");
         }
+
+        //Lose SFX 재생
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.PlaySFX(SFX.Select);
+            Debug.Log("Lose SFX 재생!");
+        }
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -143,6 +150,12 @@ public class PlayerManager : MonoBehaviour
 
     public void Hit(int damage)
     {
+        // Hit SFX 재생
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.PlaySFX(SFX.Hit);
+        }
+
         currentHP -= damage;
 
         if (currentHP < 0)

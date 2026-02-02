@@ -37,6 +37,13 @@ public class GoldManager : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            //Lose SFX 재생
+            if (AudioManager.Instance != null)
+            {
+                AudioManager.Instance.PlaySFX(SFX.LevelUp);
+                Debug.Log("Lose SFX 재생!");
+            }
+
             playerManager = collision.gameObject.GetComponentInParent<PlayerManager>();
             StartCoroutine(MoveToCoinUI());
         }

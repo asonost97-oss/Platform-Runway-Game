@@ -40,12 +40,6 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0f;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void StartGame()
     {
         if(state == GameState.Intro)
@@ -54,6 +48,13 @@ public class GameManager : MonoBehaviour
             startBtn.SetActive(false);
             // 게임 재개
             Time.timeScale = 1f;
+
+            // 시작 버튼 클릭 시 BGM 재생 (InGameAudio에서 처리)
+            var inGameAudio = FindObjectOfType<InGameAudio>();
+            if (inGameAudio != null)
+            {
+                inGameAudio.PlayInGameBGM();
+            }
         }
     }
 

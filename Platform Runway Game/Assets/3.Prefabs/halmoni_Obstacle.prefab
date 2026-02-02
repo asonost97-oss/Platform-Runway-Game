@@ -163,7 +163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05eb5841d2381d6419f8f946f443f202, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 6
+  speed: 7
   moveDr: {x: -1, y: 0, z: 0}
 --- !u!114 &3998547413669765652
 MonoBehaviour:
@@ -177,7 +177,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99a72ce028dcc624c97afa9026fd623c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapData: {fileID: 11400000, guid: cb106d012f40b03408cf35fb52c0e6da, type: 2}
+  aliveTimeAfterSpawn: 5
 --- !u!114 &-5334974382258223783
 MonoBehaviour:
   m_ObjectHideFlags: 0
